@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<body style="background-image:url(../../../static/background2.jpg);background-size:cover;">
+<div class="container scale-up-center">
+    <div>
+		<br/>
+            <h2 class="float-right">Expense Details </h2>
+		<br/>
+		<form class="mt-5" method="POST" action="/hr_expense/new_expense/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <a class="btn btn-dark" href="/hr_expense/show_expense"><i class="fa fa-arrow-left" 
+                aria-hidden="true"></i> Back</a>
+            <a class="btn btn-primary" href="/hr_expense/update/{{expense.id}}/"> Update </a>
+            <a class="btn btn-danger" href="/hr_expense/delete/{{expense.id}}/" 
+                onclick="return confirm('Are you sure?');"> Delete </a>
+        </div>
+        <br/>
+		<div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> ItemName </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{expense.itemname}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> Quantity </label>
+                    <div class="col-md-8">
+						<input type="text" value="{{expense.quantity}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Price </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{expense.price}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Amount </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{expense.amount}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+        <div class="form-row">
+			<div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Category </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{expense.category}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Date </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{expense.date}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+		
+        </div>
+		
+		<div class="form-row">
+		<div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Employee </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{expense.employee}}" class="form-control" readonly/>
+                    </div>
+                </div>
+        </div>
+		</div>
+    </form>
+</div>
+    </div>
+</body>
+{% endblock %}

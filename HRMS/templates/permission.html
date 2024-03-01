@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+<body style="">
+<div class="container">
+    <h1 class="text-center">  </h1>
+    <form method="POST">
+        {% csrf_token %}
+		<h1 align="center" style="color:red;margin-top:100px;">Sorry {{user.get_full_name}} does not Have Permission!</h1>
+		<img src="../../static/permission.jpg" style="width:400px;height:300px;margin-left:200px;">
+		<img src="../../static/no.gif" style="width:300px;height:300px;margin-left:100px;">
+		<br/>
+        <a href="javascript:history.back()" class="btn btn-dark">
+		<i class="fa fa-arrow-left" aria-hidden="true"></i> Back </a>
+		
+		<a class="btn btn-danger" href="/logout"> LogOut </a>
+    </form>
+</div>
+</body>
+{% endblock body_block %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<body style="background-image:url(../../../static/background2.jpg);background-size:cover;">
+<div class="container scale-up-center">
+    <div>
+		<br/>
+            <h2 class="float-right">PayRoll Details </h2>
+		<br/>
+		<form class="mt-5" method="POST" action="/hr_payroll/new_payroll/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <a class="btn btn-dark" href="/hr_payroll/show_payroll"><i class="fa fa-arrow-left" 
+                aria-hidden="true"></i> Back</a>
+            <a class="btn btn-primary" href="/hr_payroll/update/{{payroll.id}}/"> Update </a>
+            <a class="btn btn-danger" href="/hr_payroll/delete/{{payroll.id}}/" 
+                onclick="return confirm('Are you sure?');"> Delete </a>
+        </div>
+        <br/>
+		<div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> Name </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{payroll.name}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> Salary </label>
+                    <div class="col-md-8">
+						<input type="text" value="{{payroll.salary}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> bonus </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{payroll.bonus}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> mulct </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{payroll.mulct}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+        <div class="form-row">
+			<div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Total </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{payroll.total}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Pay Day </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{payroll.pay_day}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+		
+        </div>
+    </form>
+</div>
+    </div>
+</body>	
+{% endblock %}

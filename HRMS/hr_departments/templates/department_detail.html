@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<body style="background-image:url(../../../static/background2.jpg);background-size:cover;">
+<div class="container scale-up-center">
+    <div>
+        <div>
+		<br/>
+            <h2 class="float-right"> Department Details </h2>
+		<br/>
+        </div>
+		<form class="mt-5" method="POST" action="/hr_departments/new_department/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <a class="btn btn-dark" href="/hr_departments/show_department/"><i class="fa fa-arrow-left" 
+                aria-hidden="true"></i> Back</a>
+            <a class="btn btn-primary" href="/hr_departments/update/{{department.id}}/"> Update </a>
+            <a class="btn btn-danger" href="/hr_departments/delete/{{department.id}}/" 
+                onclick="return confirm('Are you sure?');"> Delete </a>
+				
+			<div align="center">
+				<image src="/media/{{department.attachment}}" style="width:250px;height:150px;border:5px solid gray;" class="rounded" >
+			</div>
+        </div>
+		        <br/>
+		        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> Name </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{department.name}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> Sequence </label>
+                    <div class="col-md-8">
+						<input type="text" value="{{department.sequence}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		       <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Meeting Date </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{department.meeting_date}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Total Employees </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{department.total_employees}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Note </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{department.note}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Status </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{department.status}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Create Date </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{department.create_date}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Active </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{department.is_active}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    </div>    
+</div>
+</body>
+{% endblock %}

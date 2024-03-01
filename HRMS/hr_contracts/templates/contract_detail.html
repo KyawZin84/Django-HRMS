@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<body style="background-image:url(../../../static/background2.jpg);background-size:cover;">
+<div class="container scale-up-center">  
+    <br/>
+    <h1 class="float-right"> Contract Details </h1> 
+    <br/>
+    <form class="mt-5" method="POST" action="/hr_contracts/new_contract/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <a class="btn btn-dark" href="/hr_contracts/show_contract"><i class="fa fa-arrow-left" 
+                aria-hidden="true"></i> Back</a>
+            <a class="btn btn-primary" href="/hr_contracts/update/{{contract.id}}/"> Update </a>
+            <a class="btn btn-danger" href="/hr_contracts/delete/{{contract.id}}/" 
+                onclick="return confirm('Are you sure?');"> Delete </a>
+        </div>
+        <br/>
+	<div style="border:2px solid gray;padding:10px;font-size:20px;">
+                <div class="row">
+                    <div style="font-size:40px;margin:0 auto;">
+                        {{contract.name}}
+                    </div>
+                </div>
+				<br/><br/>
+		<div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> Rank </label>
+                    <div class="col-md-9">
+                        {{contract.rank}}
+                    </div>
+                </div>
+            </div>
+			
+			<div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Active </label>
+                    <div class="col-md-9">
+                        {{contract.is_active}}
+                    </div>
+                </div>
+            </div>
+		</div>
+		
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Start Date </label>
+                    <div class="col-md-9">
+                        {{contract.start_date}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> End Date </label>
+                    <div class="col-md-9">
+                        {{contract.end_date}}
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Note </label>
+                    <div class="col-md-9">
+                        {{contract.note}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Status </label>
+                    <div class="col-md-9">
+                        {{contract.status}}
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Employee </label>
+                    <div class="col-md-9">
+                        {{contract.employee}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Tags </label>
+                    <div class="col-md-9">
+                        {% for tag in contract.tags.all %}
+                            <a href="#" class="badge badge-pill badge-info"> {{tag}} </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Create Date </label>
+                    <div class="col-md-9">
+                        {{contract.create_date}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Attachment </label>
+                    <div class="col-md-9">
+						{{contract.attachment}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+	</div><!--!!!!!-->
+    </form>
+</div>
+</body>
+{% endblock %}

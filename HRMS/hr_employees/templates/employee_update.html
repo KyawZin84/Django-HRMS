@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+{% load static %}
+<body style="background-image:url(../../../static/background3.jpg);background-size:cover;">
+<div class="container" style="margin-bottom:50px;color:white;">
+    <br/>
+    <h1 class="float-right"> Update Employee </h1>
+    <br/>
+    <form class="mt-3 scale-up-center" method="POST" action="/hr_employees/update/{{form.instance.id}}/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <a href="javascript:history.back()" class="btn btn-dark"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back </a>
+            <input type="submit" value="Save" class="btn btn-primary">
+        </div>
+        <br/>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.name.label_tag }} 
+                {{ form.name }}
+            </div>
+
+            <div class="form-group col-md-6">
+                {{ form.age.label_tag }} 
+                {{ form.age }} 
+            </div>
+        </div>
+
+        <div>
+            {{ form.birthday.label_tag }} 
+            {{ form.birthday }}  
+        </div>
+
+        <div>
+            {{ form.address.label_tag }} 
+            {{ form.address }}  
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                {{ form.email.label_tag }} 
+                {{ form.email }} 
+            </div>
+
+            <div class="form-group col-md-4">
+                {{ form.gender.label_tag }} 
+                {{ form.gender }} 
+            </div>
+
+            <div class="form-group col-md-4">
+                {{ form.joining_date.label_tag }} 
+                {{ form.joining_date }} 
+            </div>
+        </div>
+
+		<div>
+            {{ form.job.label_tag }} 
+            {{ form.job }} 
+        </div>
+
+        <div>
+            {{ form.tags.label_tag }} 
+            {{ form.tags }} 
+        </div>
+		
+        <div>
+            {{ form.is_married.label_tag }} 
+            {{ form.is_married }} 
+        </div>
+
+        <div>
+            {{ form.image.label_tag }} 
+            {{ form.image }} 
+        </div>
+    </form>
+</div>
+</body>
+{% endblock %}

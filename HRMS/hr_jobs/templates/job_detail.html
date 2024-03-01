@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<body style="background-image:url(../../../static/background2.jpg);background-size:cover;">
+<div class="container scale-up-center">
+    <div>
+		<br/>
+            <h2 class="float-right"> Job Details </h2>
+		<br/>
+		<form class="mt-5" method="POST" action="/hr_jobs/new_job/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <a class="btn btn-dark" href="/hr_jobs/show_job"><i class="fa fa-arrow-left" 
+                aria-hidden="true"></i> Back</a>
+            <a class="btn btn-primary" href="/hr_jobs/update/{{job.id}}/"> Update </a>
+            <a class="btn btn-danger" href="/hr_jobs/delete/{{job.id}}/" 
+                onclick="return confirm('Are you sure?');"> Delete </a>
+				
+			<div align="center">
+				<image src="/media/{{job.attachment}}" style="width:250px;height:150px;border:5px solid gray;" class="rounded" >
+			</div>
+        </div>
+        <br/>
+		<div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> Name </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{job.name}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> Sequence </label>
+                    <div class="col-md-8">
+						<input type="text" value="{{job.sequence}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		       <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Open Date </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{job.open_date}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Expected Salary </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{job.expected_salary}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Note </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{job.note}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Status </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{job.status}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+			
+		<div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Department </label>
+                    <div class="col-md-8">
+						<input type='text' name='department' value='{{job.department}}' class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Tags </label>
+                    <div class="col-md-8">
+                        {% for tag in job.tags.all %}
+                            <a href="#" class="badge badge-pill badge-info" style="font-size:15px;"> {{tag}} </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Create Date </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{job.create_date}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Active </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{job.is_active}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+    </div>    
+</body>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<body style="background-image:url(../../../static/background2.jpg);background-size:cover;">
+<div class="container scale-up-center">
+    <div>
+		<br/>
+            <h2 class="float-right"> Attendance Details </h2>
+		<br/>
+		<form class="mt-5" method="POST" action="/hr_attendance/new_attendance/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <a class="btn btn-dark" href="/hr_attendance/show_attendance"><i class="fa fa-arrow-left" 
+                aria-hidden="true"></i> Back</a>
+            <a class="btn btn-primary" href="/hr_attendance/update/{{attendance.id}}/"> Update </a>
+            <a class="btn btn-danger" href="/hr_attendance/delete/{{attendance.id}}/" 
+                onclick="return confirm('Are you sure?');"> Delete </a>
+        </div>
+        <br/>
+		<div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> Date </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{attendance.date}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <label class="col-md-3 font-weight-bold"> Day </label>
+                    <div class="col-md-8">
+						<input type="text" value="{{attendance.day}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		       <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Name </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{attendance.name}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Status </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{attendance.status}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> InTime </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{attendance.intime}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Out Time </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{attendance.outtime}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+			
+
+		
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <div class="form-row">
+                    <label class="col-md-3 font-weight-bold"> Reason </label>
+                    <div class="col-md-8">
+                        <input type="text" value="{{attendance.reason}}" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+			
+        </div>
+    </form>
+</div>
+    </div>
+</body>
+{% endblock %}
